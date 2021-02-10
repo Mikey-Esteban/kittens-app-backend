@@ -23,9 +23,8 @@ class Api::V1::KittensController < ApplicationController
   end
 
   def update
-    puts "---- UPDATE ROUTE BEING HIT -----"
     kitten = Kitten.find_by(id: params[:id])
-    puts "==== KITTEN #{kitten} ======"
+
     if kitten.update(kitten_params)
       render json: KittenSerializer.new(kitten).serializable_hash.to_json
     else
